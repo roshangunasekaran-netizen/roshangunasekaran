@@ -19,7 +19,7 @@ class ProfitPredictionInput(BaseModel):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Load your model on startup
-    ml_models["my_model"] = joblib.load("/content/profit_prediction_model.joblib")
+    ml_models["my_model"] = joblib.load("profit_prediction_model.joblib")
     yield
     # Clean up on shutdown
     ml_models.clear()
