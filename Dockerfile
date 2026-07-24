@@ -19,8 +19,10 @@ COPY potatoes_yield_linear_model.joblib .
 COPY cassava_yield_linear_model.joblib .
 COPY sweet_potatoes_yield_linear_model.joblib .
 
-# Expose the port the app runs on
 EXPOSE 5000
 
-# Command to run the application using Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "predict_profit_api:app"]
+
+EXPOSE 10000
+
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT} predict_profit_api:app"]
